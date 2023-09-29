@@ -11,7 +11,7 @@ const App = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    searchMovies("Batman");
+    searchMovies("superman");
   }, []);
 
   const searchMovies = async (title) => {
@@ -34,11 +34,17 @@ const App = () => {
         <img
           src={SearchIcon}
           alt="search"
-          onClick={() => searchMovies(searchTerm)}
+          onClick={() =>
+            
+              searchMovies(searchTerm)
+              
+             
+            }
         />
       </div>
 
-      {movies?.length > 0 ? (
+      {
+      searchTerm.length>=3?(movies?.length > 0 ? (
         <div className="container">
           {movies.map((movie) => (
             <MovieCard movie={movie} />
@@ -48,7 +54,11 @@ const App = () => {
         <div className="empty">
           <h2>No movies found</h2>
         </div>
-      )}
+      )):<div className="empty">
+      <h2>Enter atleast three characters</h2>
+    </div>
+      
+      }
     </div>
   );
 };
